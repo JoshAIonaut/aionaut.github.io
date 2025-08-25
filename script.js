@@ -33,10 +33,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navbar.style.background = 'rgba(15, 20, 25, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px rgba(168, 85, 247, 0.3)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = 'rgba(15, 20, 25, 0.9)';
         navbar.style.boxShadow = 'none';
     }
 });
@@ -198,3 +198,59 @@ function animateCounters() {
 }
 
 document.addEventListener('DOMContentLoaded', animateCounters);
+
+// Add shooting stars effect
+function createShootingStars() {
+    const shootingStar = document.createElement('div');
+    shootingStar.className = 'shooting-star';
+    document.body.appendChild(shootingStar);
+    
+    // Random position and animation
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight * 0.5;
+    
+    shootingStar.style.left = startX + 'px';
+    shootingStar.style.top = startY + 'px';
+    
+    // Animate the shooting star
+    setTimeout(() => {
+        shootingStar.style.transform = 'translate(300px, 300px)';
+        shootingStar.style.opacity = '0';
+    }, 100);
+    
+    // Remove after animation
+    setTimeout(() => {
+        document.body.removeChild(shootingStar);
+    }, 3000);
+}
+
+// Create shooting stars periodically
+setInterval(createShootingStars, 8000);
+
+// Add CSS for shooting stars dynamically
+const style = document.createElement('style');
+style.textContent = `
+    .shooting-star {
+        position: fixed;
+        width: 2px;
+        height: 2px;
+        background: linear-gradient(45deg, #a855f7, #ec4899, #3b82f6);
+        border-radius: 50%;
+        box-shadow: 0 0 10px #a855f7;
+        transition: all 3s ease-out;
+        pointer-events: none;
+        z-index: 1;
+    }
+    
+    .shooting-star::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 1px;
+        background: linear-gradient(90deg, #a855f7, transparent);
+        transform: translateX(-20px);
+    }
+`;
+document.head.appendChild(style);
