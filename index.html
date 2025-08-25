@@ -19,6 +19,23 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Chatwoot -->
+    <script>
+      (function(d,t) {
+        var BASE_URL="http://localhost:3000";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'M6Q4jd7nwjZKiB4ohnadqq1r',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -377,22 +394,5 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
-    
-    <!-- Chatwoot -->
-    <script>
-      (function(d,t) {
-        var BASE_URL="http://0.0.0.0:3000";
-        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=BASE_URL+"/packs/js/sdk.js";
-        g.async = true;
-        s.parentNode.insertBefore(g,s);
-        g.onload=function(){
-          window.chatwootSDK.run({
-            websiteToken: 'M6Q4jd7nwjZKiB4ohnadqq1r',
-            baseUrl: BASE_URL
-          })
-        }
-      })(document,"script");
-    </script>
 </body>
 </html>
