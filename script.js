@@ -1,256 +1,60 @@
-// Mobile Navigation Toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
+// Minimal, focused interactions for the garden furniture landing page
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile Navigation Toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
     });
-
-    // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
     }));
-});
+  }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
-});
+  });
 
-// Navbar background on scroll
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(15, 20, 25, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(168, 85, 247, 0.3)';
-    } else {
-        navbar.style.background = 'rgba(15, 20, 25, 0.9)';
-        navbar.style.boxShadow = 'none';
-    }
-});
-
-// Form handling
-document.querySelector('.contact-form form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const company = formData.get('company');
-    const message = formData.get('message');
-    
-    // Simple form validation
-    if (!name || !email || !message) {
-        alert('Bitte füllen Sie alle Pflichtfelder aus.');
-        return;
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-        return;
-    }
-    
-    // Simulate form submission
-    const submitButton = this.querySelector('.btn');
-    const originalText = submitButton.innerHTML;
-    
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wird gesendet...';
-    submitButton.disabled = true;
-    
-    setTimeout(() => {
-        alert('Vielen Dank für Ihre Nachricht! Wir werden uns zeitnah bei Ihnen melden.');
-        this.reset();
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
-    }, 2000);
-});
-
-// Animate elements on scroll
-function animateOnScroll() {
-    const elements = document.querySelectorAll('.service-card, .feature, .stat');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+  // Reveal on scroll (subtle)
+  const revealEls = document.querySelectorAll('.product-card, .feature, .stat');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
     });
-    
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(element);
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(el);
+  });
+
+  // Contact form demo handling
+  const form = document.querySelector('.contact-form form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = new FormData(this);
+      const name = data.get('name'); const email = data.get('email'); const message = data.get('message');
+      if (!name || !email || !message) { alert('Bitte füllen Sie alle Pflichtfelder aus.'); return; }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; if (!emailRegex.test(email)) { alert('Bitte eine gültige E-Mail-Adresse eingeben.'); return; }
+      const btn = this.querySelector('.btn'); const original = btn.innerHTML; btn.innerHTML = 'Wird gesendet…'; btn.disabled = true;
+      setTimeout(() => { alert('Vielen Dank! Wir melden uns zeitnah.'); this.reset(); btn.innerHTML = original; btn.disabled = false; }, 1200);
     });
-}
-
-// Initialize animations when DOM is loaded
-document.addEventListener('DOMContentLoaded', animateOnScroll);
-
-// Floating animation for hero elements
-function addFloatingAnimation() {
-    const floatingCards = document.querySelectorAll('.floating-card');
-    
-    floatingCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 2}s`;
-        
-        // Add subtle mouse interaction
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.05)';
-            this.style.transition = 'all 0.3s ease';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-}
-
-document.addEventListener('DOMContentLoaded', addFloatingAnimation);
-
-// Add typing effect to hero title
-function typeWriter() {
-    const titleElement = document.querySelector('.hero-title');
-    if (!titleElement) return;
-    
-    const text = titleElement.innerHTML;
-    titleElement.innerHTML = '';
-    titleElement.style.borderRight = '2px solid #667eea';
-    
-    let i = 0;
-    function type() {
-        if (i < text.length) {
-            titleElement.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, 50);
-        } else {
-            setTimeout(() => {
-                titleElement.style.borderRight = 'none';
-            }, 1000);
-        }
-    }
-    
-    setTimeout(type, 1000);
-}
-
-// Uncomment the line below if you want the typing effect
-// document.addEventListener('DOMContentLoaded', typeWriter);
-
-// Add parallax effect to hero section
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const heroVisual = document.querySelector('.hero-visual');
-    if (heroVisual) {
-        heroVisual.style.transform = `translateY(${scrolled * 0.2}px)`;
-    }
+  }
 });
-
-// Add counter animation for stats
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.textContent.replace(/\D/g, ''));
-                const suffix = counter.textContent.replace(/\d/g, '');
-                let current = 0;
-                const increment = target / 50;
-                
-                const updateCounter = () => {
-                    if (current < target) {
-                        current += increment;
-                        counter.textContent = Math.floor(current) + suffix;
-                        setTimeout(updateCounter, 40);
-                    } else {
-                        counter.textContent = target + suffix;
-                    }
-                };
-                
-                updateCounter();
-                observer.unobserve(counter);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    counters.forEach(counter => observer.observe(counter));
-}
-
-document.addEventListener('DOMContentLoaded', animateCounters);
-
-// Add shooting stars effect
-function createShootingStars() {
-    const shootingStar = document.createElement('div');
-    shootingStar.className = 'shooting-star';
-    document.body.appendChild(shootingStar);
-    
-    // Random position and animation
-    const startX = Math.random() * window.innerWidth;
-    const startY = Math.random() * window.innerHeight * 0.5;
-    
-    shootingStar.style.left = startX + 'px';
-    shootingStar.style.top = startY + 'px';
-    
-    // Animate the shooting star
-    setTimeout(() => {
-        shootingStar.style.transform = 'translate(300px, 300px)';
-        shootingStar.style.opacity = '0';
-    }, 100);
-    
-    // Remove after animation
-    setTimeout(() => {
-        document.body.removeChild(shootingStar);
-    }, 3000);
-}
-
-// Create shooting stars periodically
-setInterval(createShootingStars, 8000);
-
-// Add CSS for shooting stars dynamically
-const style = document.createElement('style');
-style.textContent = `
-    .shooting-star {
-        position: fixed;
-        width: 2px;
-        height: 2px;
-        background: linear-gradient(45deg, #a855f7, #ec4899, #3b82f6);
-        border-radius: 50%;
-        box-shadow: 0 0 10px #a855f7;
-        transition: all 3s ease-out;
-        pointer-events: none;
-        z-index: 1;
-    }
-    
-    .shooting-star::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        height: 1px;
-        background: linear-gradient(90deg, #a855f7, transparent);
-        transform: translateX(-20px);
-    }
-`;
-document.head.appendChild(style);
