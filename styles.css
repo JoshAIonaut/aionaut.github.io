@@ -16,11 +16,17 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./gradient-bg.png');
+    background: radial-gradient(ellipse at 30% 70%, 
+        rgba(139, 92, 246, 0.25) 0%, 
+        rgba(168, 85, 247, 0.20) 25%, 
+        rgba(59, 130, 246, 0.15) 50%, 
+        rgba(16, 185, 129, 0.10) 75%, 
+        rgba(236, 72, 153, 0.15) 100%);
+    background-image: url('/aionaut.github.io/gradient-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.25;
+    opacity: 1;
     pointer-events: none;
     z-index: -1;
 }
