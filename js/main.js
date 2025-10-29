@@ -4,77 +4,84 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
-  // Sticky header shadow
-  const header = $('.site-header');
-  const onScroll = () => {
-    if (window.scrollY > 6) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-  };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  const sidebar = $('.sidebar');
+  const navToggle = $('.sidebar__toggle');
+  const navMenu = $('.sidebar__nav');
 
-  // Mobile nav toggle
-  const navToggle = $('.nav-toggle');
-  const nav = $('#hauptnav');
-  if (navToggle && nav) {
+  const handleScroll = () => {
+    if (!sidebar) return;
+    const scrolled = window.scrollY > 12;
+    sidebar.classList.toggle('sidebar--scrolled', scrolled);
+  };
+
+  handleScroll();
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  if (navToggle && navMenu) {
     navToggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      const isOpen = navMenu.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    $$('a[href^="#"]', navMenu).forEach((link) => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('is-open')) {
+          navMenu.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
   }
 
-  // Intersection reveal
   const io = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.isIntersecting) {
-        e.target.classList.add('in-view');
-        io.unobserve(e.target);
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
       }
-    }
+    });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-  $$('.reveal').forEach(el => io.observe(el));
+  $$('.reveal').forEach((el) => io.observe(el));
 
-  // Smooth scroll for internal anchors
-  $$('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (ev) => {
-      const id = a.getAttribute('href').slice(1);
+  $$('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (event) => {
+      const id = anchor.getAttribute('href').slice(1);
       const target = document.getElementById(id);
       if (target) {
-        ev.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
 
-  // Year in footer
   const yearEl = $('#year');
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  if (yearEl) {
+    yearEl.textContent = String(new Date().getFullYear());
+  }
 
-  // Theme toggle: auto/light/dark with localStorage
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   const applyTheme = (mode) => {
     document.documentElement.setAttribute('data-theme', mode);
-    const t = $('#theme-toggle');
-    if (t) t.textContent = mode === 'dark' ? '☀️' : '🌙';
+    const toggle = $('#theme-toggle');
+    if (toggle) toggle.textContent = mode === 'dark' ? '☀️' : '🌙';
     localStorage.setItem('theme', mode);
   };
-  const saved = localStorage.getItem('theme');
-  applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+  const storedTheme = localStorage.getItem('theme');
+  applyTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
 
   $('#theme-toggle')?.addEventListener('click', () => {
-    const curr = document.documentElement.getAttribute('data-theme');
-    applyTheme(curr === 'dark' ? 'light' : 'dark');
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
   });
 
-  // Kontaktformular: mailto mit Vorbelegung
   const form = $('#contact-form');
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
     const name = $('#name')?.value || '';
     const email = $('#email')?.value || '';
     const message = $('#message')?.value || '';
-    const to = 'kontakt@example.com'; // TODO: echte Adresse einsetzen
-    const subject = encodeURIComponent('Kontaktanfrage Aionaut');
+    const to = 'kontakt@example.com';
+    const subject = encodeURIComponent('Kontaktanfrage AIonaut');
     const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`);
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
   });
