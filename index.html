@@ -78,56 +78,64 @@
     <!-- Hero -->
     <section id="top" class="section hero">
       <div class="container grid-2">
-        <div class="hero-copy reveal">
+        <div class="hero__content reveal">
+          <span class="hero__badge">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m7-7H5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            KI mit Wirkung
+          </span>
           <h1>Aionaut – Agentische KI, die Wert schafft.</h1>
-          <p class="subline">Wir entwickeln Agentic‑KI‑Systeme, RAG‑Lösungen auf Ihren Unternehmensdaten und KI‑Copiloten für Ihre Teams.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#kontakt">Kostenloses Beratungsgespräch buchen</a>
-            <a class="btn btn-ghost" href="#leistungen">Unsere Leistungen</a>
+          <p class="lead">Wir entwickeln Agentic‑KI‑Systeme, RAG‑Integrationen auf Ihren Unternehmensdaten und KI‑Copiloten, die Teams produktiver und Entscheidungen sicherer machen.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#kontakt">Kostenloses Beratungsgespräch buchen</a>
+            <a class="btn btn--secondary" href="#leistungen">Unsere Leistungen</a>
+            <a class="btn btn--ghost" href="#referenzen">Fallstudien (bald)</a>
           </div>
         </div>
-        <div class="hero-art reveal" aria-hidden="true">
-          <div class="hero-gradient"></div>
-        </div>
+        <div class="hero__media reveal" aria-hidden="true"></div>
       </div>
     </section>
 
     <!-- Leistungen -->
     <section id="leistungen" class="section">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section__header reveal">
           <h2>Leistungen</h2>
           <p>Klar fokussiert auf Wirkung und Sicherheit.</p>
         </header>
-
-        <div class="cards">
-          <article class="card reveal">
-            <div class="card-icon" aria-hidden="true">🤖</div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3l4 4-9 9-4 4 4-9 5-5"/><path d="M15 6l3 3"/><path d="M11 2l2 2"/></svg>
+            </div>
             <h3>Agentic‑KI‑Entwicklung</h3>
             <ul>
-              <li>Orchestrierung autonomer Tasks &amp; Tools</li>
-              <li>Workflow‑Automatisierung mit Guardrails</li>
-              <li>Messbare KPIs und Monitoring</li>
+              <li>Mehrstufige Agenten, orchestriert mit klaren Guardrails</li>
+              <li>Tool-Integration für Automatisierung in Kernprozessen</li>
+              <li>Messbare KPIs, Monitoring und Feedback Loops</li>
             </ul>
           </article>
 
-          <article class="card reveal">
-            <div class="card-icon" aria-hidden="true">📚</div>
+          <article class="feature-card reveal">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M4 12h10"/><path d="M4 19h6"/><path d="M18 9l3 3-3 3"/><path d="M15 12h6"/></svg>
+            </div>
             <h3>RAG‑Integrationen</h3>
             <ul>
-              <li>Knowledge Bases &amp; Vektorensuche</li>
-              <li>Daten‑Governance, Zugriff &amp; Compliance</li>
-              <li>Evaluation &amp; Halluzinationskontrolle</li>
+              <li>Enterprise Knowledge Bases &amp; Vektorensuche</li>
+              <li>Rechte- &amp; Zugriffskonzepte mit Audit Trails</li>
+              <li>Evaluation &amp; Guarding gegen Halluzinationen</li>
             </ul>
           </article>
 
-          <article class="card reveal">
-            <div class="card-icon" aria-hidden="true">🧭</div>
+          <article class="feature-card reveal">
+            <div class="feature-card__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h8"/><path d="M4 17h4"/><path d="M12 17l3 3 5-5"/></svg>
+            </div>
             <h3>KI‑Beratung &amp; Enablement</h3>
             <ul>
-              <li>Use‑Case‑Priorisierung &amp; Roadmaps</li>
-              <li>Architektur‑Blueprints, CNCF‑konform</li>
-              <li>Schulungen &amp; Change Enablement</li>
+              <li>Use‑Case‑Portfolios &amp; Entscheidungsgrundlagen</li>
+              <li>Architektur-Blueprints, CNCF-konform &amp; cloud-agnostisch</li>
+              <li>Enablement, Trainings und Change-Begleitung</li>
             </ul>
           </article>
         </div>
@@ -135,25 +143,25 @@
     </section>
 
     <!-- Vorgehen -->
-    <section id="vorgehen" class="section section-alt">
+    <section id="vorgehen" class="section section--subtle">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section__header reveal">
           <h2>Vorgehen</h2>
           <p>Strukturiert, sicher und ergebnisorientiert.</p>
         </header>
 
         <ol class="timeline">
-          <li class="reveal">
+          <li class="timeline__item reveal">
             <h3>Assess</h3>
-            <p>Use‑Cases priorisieren, Daten‑ und Prozessreife prüfen, Zielbild und KPIs definieren.</p>
+            <p>Use-Cases priorisieren, Daten- und Prozessreife bewerten sowie Erfolgsmetriken definieren – gemeinsam mit Ihren Fachbereichen.</p>
           </li>
-          <li class="reveal">
+          <li class="timeline__item reveal">
             <h3>Build</h3>
-            <p>Architektur entwerfen, Prototypen bauen, Sicherheit und Governance verankern.</p>
+            <p>Piloten und produktionsnahe Architektur-Blueprints entwickeln, Sicherheits- und Compliance-Anforderungen sauber verankern.</p>
           </li>
-          <li class="reveal">
+          <li class="timeline__item reveal">
             <h3>Integrate</h3>
-            <p>Integration in Prozesse, Systeme und Teams – Rollout, Monitoring und Iteration.</p>
+            <p>Rollout in Prozesse, Systeme und Teams – inklusive Monitoring, Change Enablement und kontinuierlicher Optimierung.</p>
           </li>
         </ol>
       </div>
@@ -162,35 +170,47 @@
     <!-- Warum Aionaut -->
     <section class="section" aria-labelledby="warum">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section__header reveal">
           <h2 id="warum">Warum Aionaut?</h2>
         </header>
-        <ul class="ticks">
-          <li class="reveal">Sicherheit &amp; Datenschutz by Design</li>
-          <li class="reveal">CNCF‑konforme, cloud‑agnostische Architekturen</li>
-          <li class="reveal">Schnelle MVPs mit klaren KPIs</li>
-          <li class="reveal">Transparente Entscheidungswege und Governance</li>
+        <ul class="trust-list">
+          <li class="reveal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6l-11 11-5-5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Sicherheit &amp; Datenschutz by Design – inklusive DSGVO-konformer Datenflüsse.
+          </li>
+          <li class="reveal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h8M4 17h4"/><path d="M14 12l3 3 3-3"/></svg>
+            CNCF-konforme, cloud-agnostische Architekturen, die in bestehende Infrastrukturen passen.
+          </li>
+          <li class="reveal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            Schnelle MVPs mit klaren KPIs und Business-Case-Validierung.
+          </li>
+          <li class="reveal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+            Transparente Governance, klar dokumentierte Entscheidungen und Enablement für Teams.
+          </li>
         </ul>
       </div>
     </section>
 
     <!-- Referenzen -->
-    <section id="referenzen" class="section section-alt">
+    <section id="referenzen" class="section section--subtle">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section__header reveal">
           <h2>Referenzen</h2>
           <p>Fallstudien – bald verfügbar.</p>
         </header>
-        <div class="cards">
-          <article class="card card-muted reveal">
+        <div class="reference-grid">
+          <article class="reference-card reveal">
             <h3>Case Study 01</h3>
             <p>Bald verfügbar</p>
           </article>
-          <article class="card card-muted reveal">
+          <article class="reference-card reveal">
             <h3>Case Study 02</h3>
             <p>Bald verfügbar</p>
           </article>
-          <article class="card card-muted reveal">
+          <article class="reference-card reveal">
             <h3>Case Study 03</h3>
             <p>Bald verfügbar</p>
           </article>
@@ -200,7 +220,7 @@
 
     <!-- Über uns -->
     <section id="ueber-uns" class="section">
-      <div class="container grid-2">
+      <div class="container about-grid">
         <div class="reveal">
           <h2>Über uns</h2>
           <p>Aionaut unterstützt mittelständische Unternehmen dabei, die Potenziale von Künstlicher Intelligenz sicher und wirksam zu nutzen. Wir kombinieren Beratung, Data/AI‑Engineering und Produkt‑Thinking – von der Strategie bis zur produktiven Umsetzung.</p>
@@ -212,54 +232,86 @@
     </section>
 
     <!-- Kontakt -->
-    <section id="kontakt" class="section section-alt">
+    <section id="kontakt" class="section section--subtle">
       <div class="container">
-        <header class="section-head reveal">
+        <header class="section__header reveal">
           <h2>Kontakt</h2>
           <p>Wir melden uns in der Regel innerhalb von 1–2 Werktagen.</p>
         </header>
 
-        <form id="contact-form" class="contact-form reveal" aria-describedby="contact-hinweis">
-          <div class="form-row">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required autocomplete="name" placeholder="Ihr Name">
-          </div>
-          <div class="form-row">
-            <label for="email">E‑Mail</label>
-            <input id="email" name="email" type="email" required autocomplete="email" placeholder="ihre.adresse@unternehmen.de">
-          </div>
-          <div class="form-row">
-            <label for="message">Nachricht</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Worum geht es?"></textarea>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Absenden</button>
-            <p id="contact-hinweis" class="contact-hinweis">Kein Backend erforderlich – E‑Mail‑Programm öffnet sich.</p>
-          </div>
-        </form>
+        <div class="contact-wrapper">
+          <aside class="contact-info reveal">
+            <span class="eyebrow">Wie wir unterstützen</span>
+            <h3>Von der ersten Idee bis zum produktiven Betrieb</h3>
+            <ul class="list-check">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                Strategieworkshops, Reifegrad-Assessment und Use-Case-Priorisierung
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                Rapid Prototyping, Reference Architectures und Governance
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+                Enablement, Schulungen und Change-Begleitung für Ihre Teams
+              </li>
+            </ul>
+          </aside>
+
+          <form id="contact-form" class="contact-form reveal" aria-describedby="contact-hinweis">
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name" placeholder="Ihr Name">
+            </div>
+            <div class="form-row">
+              <label for="email">E‑Mail</label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="ihre.adresse@unternehmen.de">
+            </div>
+            <div class="form-row">
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Worum geht es?"></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary">Absenden</button>
+              <p id="contact-hinweis" class="contact-hinweis">Kein Backend erforderlich – Ihr E‑Mail‑Programm öffnet sich.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Block -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-block reveal">
+          <span class="eyebrow">Bereit für den nächsten Schritt?</span>
+          <h3>Starten Sie mit einem unverbindlichen Assessment-Call.</h3>
+          <p>In 30 Minuten klären wir Zielbild, Machbarkeit und nächste Schritte für Ihr Projekt – präzise und ohne Buzzwords.</p>
+          <a class="btn btn--primary" href="#kontakt">Termin anfragen</a>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="assets/logo.svg" alt="" width="24" height="24" decoding="async" loading="lazy">
-        <span>© <span id="year"></span> Aionaut</span>
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.svg" alt="" width="24" height="24" decoding="async" loading="lazy">
+          <span>© <span id="year"></span> Aionaut</span>
+        </div>
+        <nav class="footer-links" aria-label="Footernavigation">
+          <a href="impressum.html" rel="nofollow">Impressum</a>
+          <a href="datenschutz.html" rel="nofollow">Datenschutz</a>
+        </nav>
+        <nav class="footer-social" aria-label="Soziale Kanäle">
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="GitHub">GitHub</a>
+        </nav>
       </div>
-      <nav aria-label="Footernavigation">
-        <a href="impressum.html" rel="nofollow">Impressum</a>
-        <a href="datenschutz.html" rel="nofollow">Datenschutz</a>
-      </nav>
-      <nav aria-label="Soziale Kanäle">
-        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-        <a href="#" aria-label="GitHub">GitHub</a>
-      </nav>
-    </div>
-  </footer>
+    </footer>
 
   <script src="js/main.js" defer></script>
 </body>
 </html>
-
