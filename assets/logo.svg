@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 64 64" role="img" aria-label="Aionaut">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18A4D9"/>
+      <stop offset="1" stop-color="#27B7EB"/>
+    </linearGradient>
+  </defs>
+  <rect rx="14" ry="14" x="4" y="4" width="56" height="56" fill="url(#g)"/>
+  <path d="M32 16l14 32h-6l-3-7H27l-3 7h-6L32 16zm0 10l-3.8 9h7.6L32 26z" fill="#06131b"/>
+  <title>Aionaut</title>
+  <!-- Einfaches neutrales Logo; später austauschbar. -->
+</svg>
+
