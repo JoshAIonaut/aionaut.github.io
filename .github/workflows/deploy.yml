@@ -30,9 +30,9 @@ jobs:
         working-directory: aionaut-web
         run: npm install
 
-      - name: Build and export static site
+      - name: Build static site (Next export mode)
         working-directory: aionaut-web
-        run: npm run export
+        run: npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
