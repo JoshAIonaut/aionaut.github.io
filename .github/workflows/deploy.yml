@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: aionaut-web
-        run: npm ci
+        run: npm install
 
       - name: Build and export static site
         working-directory: aionaut-web
@@ -49,4 +49,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
